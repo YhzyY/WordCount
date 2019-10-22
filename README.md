@@ -18,3 +18,20 @@ by Ziyi Huang
 2. Create Screenshots for the results of your Java applications that ran locally and on the cluster.
 3. Upload your Javafiles,screenshots,InputTextFiles,andOutputText Files to your GitHub Repository.
 4. Email the URL for your GitHub Repository to the Instructor by Wednesday, October 23rd, 11:59 PM EST.
+
+
+### Hadoop Commands Guide
+- export JAVA_HOME=/usr/local/jdk1.8.0_101
+- export PATH=${JAVA_HOME}/bin:${PATH}
+- export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH/lib/hadoop/hadoop-common.jar:/opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-mapreduce-client-core.jar
+
+////////// Move class files to new directory called wordCount
+
+///////// Move test data for input data set to new directory called testData
+
+- hadoop fs -put testData/ .
+- jar cvf wordcount.jar -C wordCount/ .
+- hadoop jar wordcount.jar WordCount testData output
+- hadoop fs -getmerge output collectedResults
+- You can add -nl to enable adding newline char after the end of each file
+- cat collectedResults
